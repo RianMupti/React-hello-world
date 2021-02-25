@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
-import Product from '../Product/Product';
+// import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
+import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
+// import Product from '../Product/Product';
 
 class Home extends React.Component {
     render() {
@@ -14,9 +15,13 @@ class Home extends React.Component {
                 <YoutubeComp time="9.12" title="Contoh 4" desc="Lorem ipsum dolor sit amet consectetur adipisicing." />
                 <YoutubeComp /> */}
 
-                <p>Product</p>
+                {/* <p>Product</p>
                 <hr />
-                <Product />
+                <Product /> */}
+
+                <p>Life Cycle Component</p>
+                <hr />
+                <LifeCycleComp />
             </Fragment>
         )
     }

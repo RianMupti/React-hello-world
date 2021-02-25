@@ -5,7 +5,7 @@ import './Product.css';
 class Product extends Component {
     state = {
         order: 3,
-        name: "Rian Mupti Jauhari"
+        // name: "Rian Mupti Jauhari"
     }
 
     ketikaberubah = (newValue) => {
