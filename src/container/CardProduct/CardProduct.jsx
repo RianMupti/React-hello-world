@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 class CardProduct extends Component {
     state = {
         order: 3,
-        name: "Rian Mupti Jauhari"
+        // name: "Rian Mupti Jauhari"
     }
 
     onHandleChange = (newValue) => {
