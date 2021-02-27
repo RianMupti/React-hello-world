@@ -4,6 +4,21 @@ import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
 // import Product from '../Product/Product';
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            showComponent: true
+        }
+    }
+
+    componentDidMount() {
+        // setTimeout(() => {
+        //     this.setState({
+        //         showComponent: false
+        //     })
+        // }, 15000)
+    }
+
     render() {
         return (
             <Fragment>
@@ -21,7 +36,13 @@ class Home extends React.Component {
 
                 <p>Life Cycle Component</p>
                 <hr />
-                <LifeCycleComp />
+                {
+                    this.state.showComponent
+                        ?
+                        <LifeCycleComp />
+                        :
+                        null
+                }
             </Fragment>
         )
     }
