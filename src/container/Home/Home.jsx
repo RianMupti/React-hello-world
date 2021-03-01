@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 // import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
-import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
+// import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
 // import Product from '../Product/Product';
+import BlogPost from '../BlogPost/BlogPost';
 
 class Home extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ class Home extends React.Component {
                 <hr />
                 <Product /> */}
 
-                <p>Life Cycle Component</p>
+                {/* <p>Life Cycle Component</p>
                 <hr />
                 {
                     this.state.showComponent
@@ -42,7 +43,11 @@ class Home extends React.Component {
                         <LifeCycleComp />
                         :
                         null
-                }
+                } */}
+
+                <p>Blog Post</p>
+                <hr />
+                <BlogPost />
             </Fragment>
         )
     }
