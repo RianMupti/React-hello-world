@@ -8,11 +8,12 @@ const Post = (props) => {
                     <img src="https://placeimg.com/200/150/tech" alt="Dummy image" />
                 </div>
                 <div className="content">
-                    <p className="title">{props.title}</p>
-                    <p className="desc">{props.desc}</p>
+                    <p className="title">{props.value.title}</p>
+                    <p className="desc">{props.value.body}</p>
+                    <button className="remove" onClick={() => props.remove(props.value.id)}>Remove</button>
                 </div>
             </div>
-        </Fragment>
+        </Fragment >
     )
 }
 
