@@ -19,12 +19,22 @@ class BlogPost extends Component {
 
     getPostApi = () => {
         // Axios
-        axios.get('http://localhost:3004/posts')
+        axios.get('http://localhost:3004/posts?_sort=id&_order=desc')
             .then((result) => {
                 this.setState({
                     post: result.data
                 })
                 // console.log(result)
+            })
+    }
+
+    postDataToAPI = () => {
+        axios.post('http://localhost:3004/posts', this.state.formBlogPost)
+            .then((res) => {
+                console.log(res)
+                this.getPostApi()
+            }, (err) => {
+                console.log('errot: ', err);
             })
     }
 
@@ -40,6 +50,8 @@ class BlogPost extends Component {
     handleFormChange = (event) => {
         // console.log("form change", event.target.value);
         let formBlogPostNew = { ...this.state.formBlogPost };
+        let timeStamp = new Date().getTime();
+        formBlogPostNew['id'] = timeStamp
         formBlogPostNew[event.target.name] = event.target.value
         // console.log(event.target.name)
         // console.log('init state: ', this.state.formBlogPost);
@@ -48,8 +60,13 @@ class BlogPost extends Component {
         this.setState({
             formBlogPost: formBlogPostNew
         }, () => {
-            console.log("value obj formBlogPost: ", this.state.formBlogPost)
+            // console.log("value obj formBlogPost: ", this.state.formBlogPost)
         });
+    }
+
+
+    handleSubmit = () => {
+        this.postDataToAPI()
     }
 
     componentDidMount() {
@@ -73,7 +90,7 @@ class BlogPost extends Component {
                     <input type="text" name="title" placeholder="add title" onChange={this.handleFormChange} />
                     <label htmlFor="body">Blog Content</label>
                     <textarea name="body" id="body" cols="30" rows="10" placeholder="add blog content" onChange={this.handleFormChange}></textarea>
-                    <button className="btn-simpan">Simpan</button>
+                    <button className="btn-simpan" onClick={this.handleSubmit}>Simpan</button>
                 </div>
                 {
                     this.state.post.map((res) => {
