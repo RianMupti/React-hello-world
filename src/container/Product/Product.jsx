@@ -17,6 +17,8 @@ class Product extends Component {
     render() {
         return (
             <Fragment>
+                <p>Product</p>
+                <hr />
                 <div className="header">
                     <div className="logo">
                         <img src="" alt="logo" />
