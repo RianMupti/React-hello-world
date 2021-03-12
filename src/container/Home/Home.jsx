@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 // import YoutubeComp from '../../component/YoutubeComp/YoutubeComp';
-// import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
-// import Product from '../Product/Product';
+import LifeCycleComp from '../LifeCycleComp/LifeCycleComp';
+import Product from '../Product/Product';
 import BlogPost from '../BlogPost/BlogPost';
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import './Home.css';
 
 class Home extends React.Component {
     constructor(props) {
@@ -22,33 +24,28 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Fragment>
-                {/* <h3>Youtube Component</h3>
-                <hr />
-                <YoutubeComp time="7.12" title="Contoh 1" desc="Lorem ipsum dolor sit amet consectetur adipisicing." />
-                <YoutubeComp time="8.12" title="Contoh 2" desc="Lorem ipsum dolor sit amet consectetur adipisicing." />
-                <YoutubeComp time="12.12" title="Contoh 3" desc="Lorem ipsum dolor sit amet consectetur adipisicing." />
-                <YoutubeComp time="9.12" title="Contoh 4" desc="Lorem ipsum dolor sit amet consectetur adipisicing." />
-                <YoutubeComp /> */}
+            <BrowserRouter>
 
-                {/* <p>Product</p>
-                <hr />
-                <Product /> */}
+                <div className="navigation">
+                    <Link to="/">Blog Post</Link>
+                    <Link to="/product">Product</Link>
+                    <Link to="/lifecycle">LifeCycle</Link>
+                </div>
 
-                {/* <p>Life Cycle Component</p>
-                <hr />
-                {
-                    this.state.showComponent
-                        ?
+                <Switch>
+                    <Route path="/" exact>
+                        <BlogPost />
+                    </Route>
+
+                    <Route path="/product">
+                        <Product />
+                    </Route>
+
+                    <Route path="/lifecycle">
                         <LifeCycleComp />
-                        :
-                        null
-                } */}
-
-                <p>Blog Post</p>
-                <hr />
-                <BlogPost />
-            </Fragment>
+                    </Route>
+                </Switch>
+            </BrowserRouter>
         )
     }
 }
