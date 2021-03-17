@@ -7,6 +7,7 @@ import LifeCycleComp from '../Pages/LifeCycleComp/LifeCycleComp';
 import Product from '../Pages/Product/Product';
 import BlogPost from '../Pages/BlogPost/BlogPost';
 import YoutubeCompPage from '../Pages/YoutubeCompPage/YoutubeCompPage';
+import DetailPost from '../Pages/BlogPost/DetailPost/DetailPost';
 
 // style
 import './Home.css';
@@ -19,13 +20,13 @@ class Home extends React.Component {
         }
     }
 
-    componentDidMount() {
-        // setTimeout(() => {
-        //     this.setState({
-        //         showComponent: false
-        //     })
-        // }, 15000)
-    }
+    // componentDidMount() {
+    //     // setTimeout(() => {
+    //     //     this.setState({
+    //     //         showComponent: false
+    //     //     })
+    //     // }, 15000)
+    // }
 
     render() {
         return (
@@ -42,6 +43,8 @@ class Home extends React.Component {
                     <Route path="/" exact>
                         <BlogPost />
                     </Route>
+
+                    <Route path="/detail-post/:id" component={DetailPost} />
 
                     <Route path="/product">
                         <Product />

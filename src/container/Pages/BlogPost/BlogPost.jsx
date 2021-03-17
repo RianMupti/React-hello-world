@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { withRouter } from "react-router-dom";
 import Post from '../../../component/Post/Post';
 import './BlogPost.css';
 import axios from 'axios';
@@ -110,6 +111,12 @@ class BlogPost extends Component {
         }
     }
 
+    handleDetail = (id) => {
+        // const history = useHistory()
+        this.props.history.push(`/detail-post/${id}`)
+        // <Redirect to="/somewhere/else" />
+    }
+
     componentDidMount() {
         // fetch('https://jsonplaceholder.typicode.com/posts')
         //     .then(response => response.json())
@@ -136,7 +143,7 @@ class BlogPost extends Component {
                 </div>
                 {
                     this.state.post.map((res) => {
-                        return <Post key={res.id} value={res} remove={this.handleRemove} update={this.handleUpdate} />
+                        return <Post key={res.id} value={res} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail} />
                     })
                 }
 
@@ -145,4 +152,4 @@ class BlogPost extends Component {
     }
 }
 
-export default BlogPost;
+export default withRouter(BlogPost);
