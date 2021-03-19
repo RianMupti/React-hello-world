@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import CardProduct from '../../CardProduct/CardProduct';
+import CardProduct from './CardProduct/CardProduct';
 import './Product.css';
 
 class Product extends Component {
@@ -28,7 +28,7 @@ class Product extends Component {
                         <div className="count">{this.state.order}</div>
                     </div>
                 </div>
-                <CardProduct onChange={(Value) => this.ketikaberubah(Value)} />
+                <CardProduct onCounterChange={(Value) => this.ketikaberubah(Value)} />
             </Fragment>
         )
     }
