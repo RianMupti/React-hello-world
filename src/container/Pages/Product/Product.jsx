@@ -26,7 +26,7 @@ class Product extends Component {
                     </div>
                     <div className="troley">
                         <img src="" alt="troley" />
-                        <div className="count">{this.props.order}</div>
+                        <div className="count">{0}</div>
                     </div>
                 </div>
                 {/* <CardProduct onCounterChange={(Value) => this.ketikaberubah(Value)} /> */}
@@ -42,4 +42,5 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Product);
+// export default connect(mapStateToProps)(Product);
+export default Product;
