@@ -23,7 +23,23 @@ class Home extends React.Component {
         super(props)
         this.state = {
             // showComponent: true
-            totalOrder: 5
+            totalOrder: 3
+        }
+    }
+
+    dispatch = (action) => {
+        if (action.type === 'PLUS_ORDER') {
+            this.setState({
+                totalOrder: this.state.totalOrder + 1
+            })
+        }
+
+        if (action.type === 'MINUS_ORDER') {
+            if (this.state.totalOrder > 0) {
+                this.setState({
+                    totalOrder: this.state.totalOrder - 1
+                })
+            }
         }
     }
 
@@ -38,7 +54,12 @@ class Home extends React.Component {
     render() {
         return (
             <Router>
-                <Provider value={this.state}>
+                <Provider value={
+                    {
+                        state: this.state,
+                        dispatch: this.dispatch
+                    }
+                }>
 
                     <div className="navigation">
                         <Link to="/">Blog Post</Link>
