@@ -4,18 +4,25 @@ import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './container/Home/Home';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import rootReducer from './redux/reducer/globalReducer';
+// import { createStore } from 'redux';
+// import { Provider } from 'react-redux';
+// import rootReducer from './redux/reducer/globalReducer';
 
 // store
-const storeRedux = createStore(rootReducer);
+// const storeRedux = createStore(rootReducer);
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Provider store={storeRedux}>
+//       <Home />
+//     </Provider>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={storeRedux}>
-      <Home />
-    </Provider>
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,5 +1,5 @@
 // libraries
-import React, { Fragment } from 'react';
+import React, { Fragment, createContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // pages
@@ -12,11 +12,34 @@ import DetailPost from '../Pages/BlogPost/DetailPost/DetailPost';
 // style
 import './Home.css';
 
+
+export const RootContext = createContext();
+const Provider = RootContext.Provider;
+
+
+
 class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            showComponent: true
+            // showComponent: true
+            totalOrder: 3
+        }
+    }
+
+    dispatch = (action) => {
+        if (action.type === 'PLUS_ORDER') {
+            this.setState({
+                totalOrder: this.state.totalOrder + 1
+            })
+        }
+
+        if (action.type === 'MINUS_ORDER') {
+            if (this.state.totalOrder > 0) {
+                this.setState({
+                    totalOrder: this.state.totalOrder - 1
+                })
+            }
         }
     }
 
@@ -31,33 +54,40 @@ class Home extends React.Component {
     render() {
         return (
             <Router>
+                <Provider value={
+                    {
+                        state: this.state,
+                        dispatch: this.dispatch
+                    }
+                }>
 
-                <div className="navigation">
-                    <Link to="/">Blog Post</Link>
-                    <Link to="/product">Product</Link>
-                    <Link to="/lifecycle">LifeCycle</Link>
-                    <Link to="/youtube-component">Youtube Component</Link>
-                </div>
+                    <div className="navigation">
+                        <Link to="/">Blog Post</Link>
+                        <Link to="/product">Product</Link>
+                        <Link to="/lifecycle">LifeCycle</Link>
+                        <Link to="/youtube-component">Youtube Component</Link>
+                    </div>
 
-                <Switch>
-                    <Route path="/" exact>
-                        <BlogPost />
-                    </Route>
+                    <Switch>
+                        <Route path="/" exact>
+                            <BlogPost />
+                        </Route>
 
-                    <Route path="/detail-post/:id" component={DetailPost} />
+                        <Route path="/detail-post/:id" component={DetailPost} />
 
-                    <Route path="/product">
-                        <Product />
-                    </Route>
+                        <Route path="/product">
+                            <Product />
+                        </Route>
 
-                    <Route path="/lifecycle">
-                        <LifeCycleComp />
-                    </Route>
+                        <Route path="/lifecycle">
+                            <LifeCycleComp />
+                        </Route>
 
-                    <Route path="/youtube-component">
-                        <YoutubeCompPage />
-                    </Route>
-                </Switch>
+                        <Route path="/youtube-component">
+                            <YoutubeCompPage />
+                        </Route>
+                    </Switch>
+                </Provider>
 
             </Router>
         )

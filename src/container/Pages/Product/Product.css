@@ -1,3 +1,7 @@
+div.container {
+    padding-bottom: 50px;
+}
+
 .header {
     background: #68c93e;
     display: flex;
