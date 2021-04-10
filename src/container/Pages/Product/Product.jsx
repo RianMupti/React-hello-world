@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import CardProduct from './CardProduct/CardProduct';
-import { connect } from 'react-redux';
-import { RootContext } from '../../Home/Home';
+// import { RootContext } from '../../Home/Home';
 import './Product.css';
+import { GlobalConsumer } from '../../../context/context';
 
 class Product extends Component {
     // state = {
@@ -18,31 +18,21 @@ class Product extends Component {
 
     render() {
         return (
-            <RootContext.Consumer>
-                {
-                    value => {
-                        return (
-                            <Fragment>
-                                <div className="container">
-                                    <p>Product</p>
-                                    <hr />
-                                    <div className="header">
-                                        <div className="logo">
-                                            <img src="" alt="logo" />
-                                        </div>
-                                        <div className="troley">
-                                            <img src="" alt="troley" />
-                                            <div className="count">{value.state.totalOrder}</div>
-                                        </div>
-                                    </div>
-                                    {/* <CardProduct onCounterChange={(Value) => this.ketikaberubah(Value)} /> */}
-                                    <CardProduct />
-                                </div>
-                            </Fragment>
-                        )
-                    }
-                }
-            </RootContext.Consumer>
+            <div className="container">
+                <p>Product</p>
+                <hr />
+                <div className="header">
+                    <div className="logo">
+                        <img src="" alt="logo" />
+                    </div>
+                    <div className="troley">
+                        <img src="" alt="troley" />
+                        <div className="count">{this.props.state.totalOrder}</div>
+                    </div>
+                </div>
+                {/* <CardProduct onCounterChange={(Value) => this.ketikaberubah(Value)} /> */}
+                <CardProduct />
+            </div>
         )
     }
 }
@@ -54,4 +44,4 @@ class Product extends Component {
 // }
 
 // export default connect(mapStateToProps)(Product);
-export default Product;
+export default GlobalConsumer(Product);
