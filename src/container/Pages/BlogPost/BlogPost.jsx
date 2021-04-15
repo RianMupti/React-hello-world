@@ -35,9 +35,9 @@ class BlogPost extends Component {
     }
 
     postDataToAPI = () => {
-        axios.post('http://localhost:3004/posts', this.state.formBlogPost)
-            .then((res) => {
-                console.log(res)
+        API.postNewBlog(this.state.formBlogPost).
+            then((result) => {
+                console.log(result)
                 this.getPostApi()
                 this.setState({
                     formBlogPost: {
@@ -47,8 +47,6 @@ class BlogPost extends Component {
                         body: '',
                     }
                 })
-            }, (err) => {
-                console.log('errot: ', err);
             })
     }
 
@@ -145,13 +143,13 @@ class BlogPost extends Component {
                     <textarea name="body" id="body" value={this.state.formBlogPost.body} cols="30" rows="10" placeholder="add blog content" onChange={this.handleFormChange}></textarea>
                     <button className="btn-simpan" onClick={this.handleSubmit}>Simpan</button>
                 </div>
-                <div>
+                {/* <div>
                     {
                         this.state.comments.map((comments) => {
                             return <p>{comments.name} {comments.email}</p>
                         })
                     }
-                </div>
+                </div> */}
                 {
                     this.state.post.map((res) => {
                         return <Post key={res.id} value={res} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetail} />
