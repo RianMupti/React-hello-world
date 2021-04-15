@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import Post from '../../../component/Post/Post';
 import './BlogPost.css';
 import axios from 'axios';
+import API from '../../../service';
 
 class BlogPost extends Component {
     constructor(props) {
@@ -15,19 +16,22 @@ class BlogPost extends Component {
                 title: '',
                 body: '',
             },
-            isUpdate: false
+            isUpdate: false,
+            comments: []
         }
     }
 
     getPostApi = () => {
-        // Axios
-        axios.get('http://localhost:3004/posts?_sort=id&_order=desc')
-            .then((result) => {
-                this.setState({
-                    post: result.data
-                })
-                // console.log(result)
+        API.getNewsBlog().then((result) => {
+            this.setState({
+                post: result
             })
+        })
+        API.getComment().then((result) => {
+            this.setState({
+                comments: result
+            })
+        })
     }
 
     postDataToAPI = () => {
@@ -140,6 +144,13 @@ class BlogPost extends Component {
                     <label htmlFor="body">Blog Content</label>
                     <textarea name="body" id="body" value={this.state.formBlogPost.body} cols="30" rows="10" placeholder="add blog content" onChange={this.handleFormChange}></textarea>
                     <button className="btn-simpan" onClick={this.handleSubmit}>Simpan</button>
+                </div>
+                <div>
+                    {
+                        this.state.comments.map((comments) => {
+                            return <p>{comments.name} {comments.email}</p>
+                        })
+                    }
                 </div>
                 {
                     this.state.post.map((res) => {
