@@ -9,6 +9,7 @@ import BlogPost from '../Pages/BlogPost/BlogPost';
 import YoutubeCompPage from '../Pages/YoutubeCompPage/YoutubeCompPage';
 import DetailPost from '../Pages/BlogPost/DetailPost/DetailPost';
 import GlobalProvider from '../../context/context';
+import Hooks from '../Pages/Hooks/Hooks';
 
 // style
 import './Home.css';
@@ -33,6 +34,7 @@ class Home extends React.Component {
                     <Link to="/product">Product</Link>
                     <Link to="/lifecycle">LifeCycle</Link>
                     <Link to="/youtube-component">Youtube Component</Link>
+                    <Link to="/hooks">Hooks</Link>
                 </div>
 
                 <Switch>
@@ -53,6 +55,11 @@ class Home extends React.Component {
                     <Route path="/youtube-component">
                         <YoutubeCompPage />
                     </Route>
+
+                    <Route path="/hooks">
+                        <Hooks />
+                    </Route>
+
                 </Switch>
 
             </Router>
